@@ -1,4 +1,4 @@
-import "https://deno.land/x/dotenv@v2.0.0/load.ts";
+import "https://deno.land/std@0.173.0/dotenv/load.ts";
 import { config } from "./config.ts";
 import { fireMethods } from "./actions.ts";
 
