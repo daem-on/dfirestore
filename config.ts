@@ -3,15 +3,15 @@ export const FIREBASE_DATABASE = "FIREBASE_DATABASE";
 export const FIREBASE_PROJECT_ID = "FIREBASE_PROJECT_ID";
 export const FIREBASE_PROJECT_KEY = "FIREBASE_PROJECT_KEY";
 export const FIREBASE_REFRESH_RATE = "FIREBASE_REFRESH_RATE";
+export const FIREBASE_HOST = "FIREBASE_HOST";
 
 let backgroundRefetchStarted = false;
 
 const config = {
   firebaseDb: Deno.env.get("FIREBASE_DATABASE") || "(default)",
   host(project?: string) {
-    return `https://firestore.googleapis.com/v1/projects/${
-      project ?? this.projectID
-    }`;
+    const host = Deno.env.get(FIREBASE_HOST) ?? "https://firestore.googleapis.com/v1/projects/";
+    return `${host}${project ?? this.projectID}`;
   },
   get token() {
     return Deno.env.get(FIREBASE_TOKEN);
